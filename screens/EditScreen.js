@@ -8,20 +8,23 @@ import { useSelector } from "react-redux";
 export default function EditScreen({ navigation, route }) {
 
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [ingredient, setIngredient] = useState("");
+  const [preparation, setPreparation] = useState("");
   const styles = { ...lightStyles, ...commonStyles }
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     const post = route.params.post
     setTitle(post.title);
-    setContent(post.content);
+    setIngredient(post.ingredient);
+    setPreparation(post.preparation)
   }, [])
 
   async function editPost() {
     const post = {
       "title": title,
-      "content": content,
+      "ingredient": ingredient,
+      "preparation": preparation,
     }
     const id = route.params.post.id
     try {
@@ -39,17 +42,27 @@ export default function EditScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={{ margin: 20 }}>
-        <Text style={[additionalStyles.label, styles.text]}>Enter Title:</Text>
+        <Text style={[additionalStyles.label, styles.text]}>Recipe name:</Text>
         <TextInput
           style={additionalStyles.input}
           value={title}
           onChangeText={text => setTitle(text)}
         />
-        <Text style={[additionalStyles.label, styles.text]}>Enter Content:</Text>
+        <Text style={[additionalStyles.label, styles.text]}>Ingredient:</Text>
         <TextInput
+          multiline
+          numberOfLines={4}
           style={additionalStyles.input}
-          value={content}
-          onChangeText={text => setContent(text)}
+          value={ingredient}
+          onChangeText={text => setIngredient(text)}
+        />
+        <Text style={[additionalStyles.label, styles.text]}>Preparation steps:</Text>
+        <TextInput
+          multiline
+          numberOfLines={4}
+          style={additionalStyles.input}
+          value={preparation}
+          onChangeText={text => setPreparation(text)}
         />
       <TouchableOpacity style={[styles.button, {marginTop: 20}]} onPress={editPost}>
         <Text style={styles.buttonText}>

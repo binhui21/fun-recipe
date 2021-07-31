@@ -13,7 +13,7 @@ export const commonStyles = {
   },
   title: {
     fontWeight: "bold",
-    fontSize: 30, 
+    fontSize: 48, 
     textAlign: 'center',
   },
   content: {
@@ -25,13 +25,14 @@ export const commonStyles = {
 export const lightStyles = {
   container: {
     flex: 1,
-    backgroundColor: "#ffc",
+    backgroundColor: "#afeeee",
   },
   text: {
     color: "black",
+    fontSize: 20,
   },
   header: {
-    backgroundColor: "yellow",
+    backgroundColor: "#00ced1",
     height: 100,
     shadowColor: "black",
     shadowOpacity: 0.2,
@@ -40,9 +41,9 @@ export const lightStyles = {
   headerTitle: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#f55"
+    color: "#4169e1"
   },
-  headerTint: "#f55"
+  headerTint: "#4169e1"
 };
 
 export const darkStyles = {
@@ -65,5 +66,5 @@ export const darkStyles = {
     fontWeight: "bold",
     color: "#f4d47c"
   },
-  headerTint: "#f4d47c"
+  headerTint: "#4169e1",
 }

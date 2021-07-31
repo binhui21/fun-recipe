@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { commonStyles, lightStyles } from "../styles/commonStyles";
 import axios from "axios";
@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 export default function ShowScreen({ navigation, route }) {
 
-  const [post, setPost] = useState({title: "", content: ""});
+  const [post, setPost] = useState({title: "", ingredient: "", preparation: ""});
   
   const token = useSelector((state) => state.auth.token);
   const isDark = useSelector((state) => state.accountPrefs.isDark);
@@ -51,8 +51,20 @@ export default function ShowScreen({ navigation, route }) {
   
   return (
     <View style={styles.container}>
-      <Text style={[styles.title, styles.text, { margin: 40 }]}>{post.title}</Text>
-      <Text style={[styles.content, styles.text, { margin: 20 }]}>{post.content}</Text>
+      <Text style={[styles.title, styles.text, { margin: 20 }]}>{post.title}</Text>
+      <Text style={[additionalStyles.label, styles.text]}>INGREDIENT:</Text>
+      <Text style={[styles.content, styles.text, { margin: 20 }]}>{post.ingredient}</Text>
+      <Text style={[additionalStyles.label, styles.text]}>PREPARATION STEPS:</Text>
+      <Text style={[styles.content, styles.text, { margin: 20 }]}>{post.preparation}</Text>
     </View>
   );
 }
+
+const additionalStyles = StyleSheet.create({
+  label: {
+    fontSize: 28,
+    marginBottom: 10,
+    marginLeft: 5,
+    fontWeight:"bold",
+  }
+});

@@ -10,15 +10,15 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
   UIManager.setLayoutAnimationEnabledExperimental(true);
 } //Needs to be manually enabled for android
 
-export default function SignInSignUpScreen({ navigation }) {
+export default function SignInSignUpScreen({ route, navigation }) {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [errorText, setErrorText] = useState('')
-  const [isLogIn, setIsLogIn] = useState(true)
-  
+  const { register } = route.params;
+  const [isLogIn, setIsLogIn] = useState(register)
   const dispatch = useDispatch()
 
   async function login() {
@@ -77,15 +77,18 @@ export default function SignInSignUpScreen({ navigation }) {
     }
   }
 
+
+
   return (
+    
     <View style={styles.container}>
       <Text style={styles.title}>
-        {isLogIn ? "Log In" : "Sign Up"}
+        {isLogIn ? "LOG IN" : "SIGN UP"}
       </Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
-          placeholder="Username:"
+          placeholder="Username"
           placeholderTextColor="#003f5c"
           value={username}
           onChangeText={(username) => setUsername(username)}
@@ -95,7 +98,7 @@ export default function SignInSignUpScreen({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
-          placeholder="Password:"
+          placeholder="Password"
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           value={password}
@@ -107,7 +110,7 @@ export default function SignInSignUpScreen({ navigation }) {
         <View style={styles.inputView}>
           <TextInput
             style={styles.textInput}
-            placeholder="Confirm Password:"
+            placeholder="Confirm Password"
             placeholderTextColor="#003f5c"
             secureTextEntry={true}
             value={confirmPassword}
@@ -119,7 +122,7 @@ export default function SignInSignUpScreen({ navigation }) {
       <View>
         <View style={{flexDirection: "row"}}>
           <TouchableOpacity style={styles.button} onPress={ isLogIn ? login : signUp}>
-            <Text style={styles.buttonText}> {isLogIn ? "Log In" : "Sign Up"} </Text>
+            <Text style={styles.buttonText}> {isLogIn ? "LOG IN" : "SIGN UP"} </Text>
           </TouchableOpacity>
           {loading ? <ActivityIndicator style={{ marginLeft: 10 }}/> : <View/>}
         </View>
@@ -137,7 +140,7 @@ export default function SignInSignUpScreen({ navigation }) {
           setIsLogIn(!isLogIn);
           setErrorText("");
         }}>
-          <Text style={styles.switchText}> {isLogIn ? "No account? Sign up now." : "Already have an account? Log in here."}</Text>
+          <Text style={styles.switchText}> {isLogIn ? "SIGN UP" : "HAVE AN ACCOUNT? LOG IN HERE"}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -147,35 +150,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignContent: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',
     fontSize: 40, 
-    margin: 20
+    margin: 20,
+    color: '#1e90ff',
   },
   switchText: {
     fontWeight: '400',
     fontSize: 20, 
-    marginTop: 20
+    marginTop: 20,
+    color: '#1e90ff',
   },
   inputView: {
-    backgroundColor: "#FFC0CB",
-    borderRadius: 30,
+    backgroundColor: "#f0f8ff",
+    borderRadius: 10,
     width: "70%",
     height: 45,
     marginBottom: 20,
     alignItems: "center",
   },
   textInput: {
-    height: 50,
+    height: 60,
     flex: 1,
     padding: 10,
   },
   button: {
-    backgroundColor: 'blue',
-    borderRadius: 25,
+    backgroundColor: '#5f9ea0',
+    borderRadius: 10,
   },
   buttonText: {
     fontWeight: '400',

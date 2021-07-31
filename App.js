@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-//import LoggedInTabStack from "./components/LoggedInTabStack";
+import LoggedInTabStack from "./components/LoggedInTabStack";
 import SignInSignUpScreen from "./screens/SignInSignUpScreen";
 import HomeScreen from "./screens/HomeScreen";
 import { Provider, useSelector } from "react-redux";
@@ -27,6 +27,7 @@ return (
         >
       <Stack.Screen component={HomeScreen} name="Home" />
       <Stack.Screen component={SignInSignUpScreen} name="SignInSignUp" />
+      <Stack.Screen component={LoggedInTabStack} name="Logged In" />
       
     </Stack.Navigator>
   </NavigationContainer>

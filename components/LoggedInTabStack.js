@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import BlogStack from '../components/BlogStack';
+import RecipeStack from './RecipeStack';
 import AccountStack from '../components/AccountStack';
 import { FontAwesome } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ export default function LoggedInStack() {
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
-          if (route.name === 'Blog') {
+          if (route.name === 'Recipe') {
             iconName = "comments"
           } else if (route.name === 'Settings') {
             iconName = "cog"
@@ -31,7 +31,7 @@ export default function LoggedInStack() {
           backgroundColor: "white",
         }
       }}>
-        <Tab.Screen name="Blog" component={BlogStack} />
+        <Tab.Screen name="Recipe" component={RecipeStack} />
         <Tab.Screen name="Settings" component={AccountStack} />
       </Tab.Navigator>
   )

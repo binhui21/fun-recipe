@@ -1,4 +1,4 @@
-export const API = "https://binhui1.pythonanywhere.com"
+export const API = "https://binhui2.pythonanywhere.com"
 export const API_LOGIN = "/auth"
 export const API_SIGNUP = "/newuser"
 export const API_POSTS = "/posts"

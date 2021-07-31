@@ -1,14 +1,14 @@
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 
 export default function HomeScreen({navigation}){
 
     function login() {
-        navigation.navigate("SignInSignUp")
+        navigation.navigate("SignInSignUp", {register: true})
       }
 
-      function register() {
-        navigation.navigate("SignInSignUp")
+      function gosignup() {
+        navigation.navigate("SignInSignUp", {register: false});
       }
 
     return(
@@ -22,7 +22,7 @@ export default function HomeScreen({navigation}){
             
             <Text style={styles.buttonText}> {"Log In"} </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={ register }>
+          <TouchableOpacity style={styles.button} onPress={ gosignup }>
           <Text style={styles.buttonText}> {"Register"} </Text>
           </TouchableOpacity>
           </View>

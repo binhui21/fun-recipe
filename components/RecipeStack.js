@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 const InnerStack = createStackNavigator();
 
-export default function BlogStack() {
+export default function RecipeStack() {
   
   const isDark = useSelector((state) => state.accountPrefs.isDark);
   const styles = isDark ? darkStyles : lightStyles;
@@ -22,10 +22,10 @@ export default function BlogStack() {
 
   return (
     <InnerStack.Navigator>
-      <InnerStack.Screen name="Index" component={IndexScreen} options={{ title: "Blog", ...headerOptions, headerLeft: null }} />
-      <InnerStack.Screen name="Add" component={CreateScreen} options={{ title: "Add Post", ...headerOptions }} />
+      <InnerStack.Screen name="Index" component={IndexScreen} options={{ title: "Recipes", ...headerOptions, headerLeft: null }} />
+      <InnerStack.Screen name="Add" component={CreateScreen} options={{ title: "New Recipe", ...headerOptions }} />
       <InnerStack.Screen name="Details" component={ShowScreen} options={headerOptions} />
-      <InnerStack.Screen name="Edit" component={EditScreen} options={{ title: "Edit Post", ...headerOptions }} />
+      <InnerStack.Screen name="Edit" component={EditScreen} options={{ title: "Edit Recipe", ...headerOptions }} />
     </InnerStack.Navigator>
   )
 }

@@ -95,6 +95,7 @@ export default function IndexScreen({ navigation, route }) {
             borderBottomWidth: 1,
             flexDirection: "row",
             justifyContent: "space-between",
+            
           }}>
           <Text style={styles.text}>{item.title}</Text>
           <TouchableOpacity onPress={() => deletePost(item.id)}>
