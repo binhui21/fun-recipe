@@ -25,7 +25,7 @@ export default function LoggedInStack() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
+        activeTintColor: '#4169e1',
         inactiveTintColor: 'gray',
         style: {
           backgroundColor: "white",
